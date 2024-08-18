@@ -9,6 +9,10 @@ This is a React-based Calendar Application. The application allows users to view
 ![Demo 1](demo/demo-1.gif)
 ![Demo 2](demo/demo-2.gif)
 
+### Live Demo
+
+Check out the live demo of the application [here](https://calendarapp-mehek.netlify.app/).
+
 ## Features
 
 - **Calendar View:** Displays a monthly calendar with events.
