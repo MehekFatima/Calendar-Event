@@ -1,0 +1,13 @@
+.calendarContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px; /* Adjust based on your design */
+}
+
+.calendarDay {
+  width: calc(100% / 7); /* Adjust based on number of days in a week */
+  height: 100px; /* Adjust height as needed */
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}

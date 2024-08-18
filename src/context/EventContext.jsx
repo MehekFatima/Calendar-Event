@@ -1,0 +1,49 @@
+import React, { createContext, useReducer, useContext } from 'react';
+
+const initialState = {
+  events: [],
+  eventToEdit: null,
+};
+
+const eventReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_EVENT':
+      return {
+        ...state,
+        events: [...state.events, action.payload],
+      };
+    case 'UPDATE_EVENT':
+      return {
+        ...state,
+        events: state.events.map(event =>
+          event.id === action.payload.id ? action.payload : event
+        ),
+      };
+    case 'DELETE_EVENT':
+      return {
+        ...state,
+        events: state.events.filter(event => event.id !== action.payload),
+      };
+    case 'SET_EVENT_TO_EDIT':
+      return {
+        ...state,
+        eventToEdit: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const EventContext = createContext();
+
+export const useEventContext = () => useContext(EventContext);
+
+export const EventProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(eventReducer, initialState);
+
+  return (
+    <EventContext.Provider value={{ state, dispatch }}>
+      {children}
+    </EventContext.Provider>
+  );
+};
